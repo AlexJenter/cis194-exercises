@@ -1,0 +1,2552 @@
+Test suite spec: RUNNING...
+
+CreditCardValidator
+  toDigits
+    converts positive Integers to a list of digits FAILED [1]
+  toDigitsRev
+    does what toDigits does in reverse FAILED [2]
+  doubleEveryOther
+    doubles every second digit starting from the second last FAILED [3]
+  sumDigits
+    sums the sum of the digits of all numbers in a list FAILED [4]
+  validate
+    indicates whether an Integer could be a valid credit card number FAILED [5]
+LogAnalysis
+  parseMessage
+    converts a log line into a LogMessage FAILED [6]
+  parse
+    converts many log lines into a list of log messages FAILED [7]
+    returns empty list for empty string FAILED [8]
+    returns singleton list for input without new lines FAILED [9]
+  insert
+    inserts a LogMessage into an empty tree, producing a single-node tree FAILED [10]
+    inserts a new LogMessage into a sorted MessageTree, producing a new sorted MessageTree FAILED [11]
+    does not insert LogMessages of type 'Unknown' FAILED [12]
+  build
+    builds an empty tree when given no log messages FAILED [13]
+    builds a complete MessageTree from a list of unqique messages FAILED [14]
+  inOrder
+    returns an empty list when given an empty MessageTree FAILED [15]
+    returns an singlton list when given a single-node tree FAILED [16]
+    takes a sorted MessageTree and produces a list of all the LogMessages it contains, sorted by timestamp from smallest to biggest FAILED [17]
+  whatWentWrong
+    takes an unsorted list of LogMessage s, and returns a list of the messages corresponding to any errors with a severity of 50 or greater, sorted by timestamp FAILED [18]
+Golf
+  skips
+    returns the correct list FAILED [19]
+  localMaxima
+    finds all local maxima FAILED [20]
+  histogram
+    returns the correct histogram representation FAILED [21]
+Week 04
+  fun1', the 'wholemeal' version of fun1
+    fun1' xs == fun1 xs FAILED [22]
+  fun2', the 'wholemeal' version of fun2
+    fun2' x == fun2 x FAILED [23]
+  foldTree
+    produces a single leaf for an empty list FAILED [24]
+    produces a tree of height 0 for a singleton list FAILED [25]
+    produces trees of the correct height
+      height of foldTree 'ABC' == 1 FAILED [26]
+      height of foldTree 'ABCD' == 2 FAILED [27]
+      height of foldTree 'ABCDEFGHIJ' == 3 FAILED [28]
+    produces balanced trees
+      foldTree 'ABC' is balanced FAILED [29]
+      foldTree 'ABCD' is balanced FAILED [30]
+      foldTree 'ABCDEFGHIJ' is balanced FAILED [31]
+      foldTree [1..100] is balanced FAILED [32]
+    produces trees that contain all the input values
+      foldTree 'ABC' contains all inputs FAILED [33]
+      foldTree 'ABCD' contains all inputs FAILED [34]
+      foldTree 'ABCDEFGHIJ' contains all inputs FAILED [35]
+      foldTree [1..100] contains all inputs FAILED [36]
+  xor
+    xor [] == False FAILED [37]
+    xor [False] == False FAILED [38]
+    xor [True] == True FAILED [39]
+    xor [True, True, True] == True FAILED [40]
+    xor [True, True] == False FAILED [41]
+    xor [False, True, False] == True FAILED [42]
+    xor [False, True, False, False, True] == False FAILED [43]
+  map'
+    map' f [] == map f [] FAILED [44]
+    map' f [x] == map f [x] FAILED [45]
+    map' f [x,y,z] == map f [x,y,z] FAILED [46]
+  myFoldlSpec
+    myFoldl f b [] == foldl f b [] FAILED [47]
+    myFoldl f b [x] == foldl f b [x] FAILED [48]
+    myFoldl f b [x,y,z] == foldl f b [x,y,z] FAILED [49]
+  sieveSundaram
+    sieveSundaram 1 == [3] FAILED [50]
+    sieveSundaram 2 == [3,5] FAILED [51]
+    sieveSundaram 2 == [3,5] FAILED [52]
+    sieveSundaram 5 == [3,5,7,11] FAILED [53]
+    sieveSundaram 10 == [3,5,7,11,13,17,19] FAILED [54]
+    sieveSundaram 15 == [3,5,7,11,13,17,19,23,29,31] FAILED [55]
+Week 05
+  Exercise 1
+    eval
+      eval (Lit 3) shouldBe 3 FAILED [56]
+      eval (Add (Lit 2) (Lit 5)) shouldBe 7 FAILED [57]
+      eval (Mul (Lit 2) (Lit 7)) shouldBe 14 FAILED [58]
+      eval (Mul (Add (Lit 2) (Lit 3)) (Lit 4)) shouldBe 20 FAILED [59]
+      eval (Add (Mul (Lit 5) (Lit 2)) (Lit 4)) shouldBe 14 FAILED [60]
+      eval (Add (Add (Lit 5) (Lit 2)) (Lit 4)) shouldBe 11 FAILED [61]
+      eval (Add (Add (Mul (Lit 3) (Lit 3)) (Lit 2)) (Lit 4)) shouldBe 15 FAILED [62]
+  Exercise 2
+    evalStr
+      evalStr "3" shouldBe Just 3 FAILED [63]
+      evalStr "2 + 5" shouldBe Just 7 FAILED [64]
+      evalStr "2 * 7" shouldBe Just 14 FAILED [65]
+      evalStr "(2 * 6) + 5" shouldBe Just 17 FAILED [66]
+      evalStr "(3 + 4) * 2" shouldBe Just 14 FAILED [67]
+      evalStr "(3 + 4 + 5) * (2 * 3)" shouldBe Just 72 FAILED [68]
+      evalStr "3 + " shouldBe Nothing FAILED [69]
+      evalStr "6 * " shouldBe Nothing FAILED [70]
+      evalStr "6 + (8 / 2)" shouldBe Nothing FAILED [71]
+  Exercise 3
+    instance Expr ExprT
+      lit, add, and mul should construct correct ExprT values FAILED [72]
+  Exercise 4
+    instance Expr Integer
+      (3 * -4) + 5 shouldBe Just (-7) FAILED [73]
+      (3 + 2) * 4 shouldBe Just 20 FAILED [74]
+      3 + 6 + 8 shouldBe Just 17 FAILED [75]
+      2 * 3 * 4 shouldBe Just 24 FAILED [76]
+    instance Expr Bool
+      (1 * 0) + 1 shouldBe Just True FAILED [77]
+      (1 + 0) * 1 shouldBe Just True FAILED [78]
+      (0 + 0) * 1 shouldBe Just False FAILED [79]
+      (1 * 1) * 0 shouldBe Just False FAILED [80]
+      1 * 1 * 1 * 0 shouldBe Just False FAILED [81]
+      0 + 0 + 0 + 1 shouldBe Just True FAILED [82]
+    instance Expr MinMax
+      1 shouldBe Just (MinMax 1) FAILED [83]
+      1 + 4 shouldBe Just (MinMax 4) FAILED [84]
+      2 * 5 shouldBe Just (MinMax 2) FAILED [85]
+      4 * (5 + 2) shouldBe Just (MinMax 4) FAILED [86]
+    instance Expr Mod7
+      1 shouldBe Just (Mod7 1) FAILED [87]
+      7 shouldBe Just (Mod7 0) FAILED [88]
+      9 shouldBe Just (Mod7 2) FAILED [89]
+      4 * 3 shouldBe Just (Mod7 5) FAILED [90]
+      4 + 2 shouldBe Just (Mod7 6) FAILED [91]
+      (4 + 6) * (2 + 3) shouldBe Just (Mod7 1) FAILED [92]
+  Exercise 5
+    instance Expr Program
+      1 shouldBe Just [PushI 1] FAILED [93]
+      1 + 2 shouldBe Just [PushI 1, PushI 2, Add] FAILED [94]
+      2 * 3 shouldBe Just [PushI 2, PushI 3, Mul] FAILED [95]
+      (2 * 3) + (4 * 5) shouldBe Just [PushI 2, PushI 3, Mul, PushI 4, PushI 5, Mul, Add] FAILED [96]
+    compile
+      compile "1" shouldBe [PushI 1] FAILED [97]
+      compile "1 + 4" shouldBe [SVM.PushI 1, SVM.PushI 4, Add] FAILED [98]
+      compile "5 * 3" shouldBe [SVM.PushI 5, SVM.PushI 3, Mul] FAILED [99]
+      compile "(2 * 3) + (4 * 5)" shouldBe Just [PushI 2, PushI 3, Mul, PushI 4, PushI 5, Mul, Add] FAILED [100]
+      compile "5 * " shouldBe [] FAILED [101]
+  Exercise 6
+    instance Expr VarExprT
+      add (lit 3) (var "x") `shouldBe` AddWithVar (LitWithVar 3) (Var "x") FAILED [102]
+      mul (lit 7) (var "7") `shouldBe` MulWithVar (LitWithVar 7) (Var "y") FAILED [103]
+    calculate expressions with vars
+      withVars [("x", 6)] $ add (lit 3) (var "x") `shouldBe` Just 9 FAILED [104]
+      withVars [("x", 6)] $ add (lit 3) (var "y") FAILED [105]
+      withVars [("x", 6), ("y", 3)] $ mul (var "x") (add (var "y") (var "x")) FAILED [106]
+Week 04
+  fib
+    produces the fibonacci number at index n FAILED [107]
+  fibs1
+    produces an infinite list of all the fibonacci numbers FAILED [108]
+  fibs2
+    produces an infinite list of all the fibonacci numbers in linear time FAILED [109]
+  streamToList
+    converts an infinite stream to an infinite list FAILED [110]
+  streamRepeat
+    generates a stream containing infinitely many copies of the given element FAILED [111]
+  streamMap
+    applies a function to every element of a Stream FAILED [112]
+  streamFromSeed
+    generates a stream by repeatedly applying the provided function FAILED [113]
+  nats
+    contains the infinite list of natural numbers FAILED [114]
+  ruler
+    corresponds to the ruler function FAILED [115]
+  fibs3
+    produces an infinite list of all the fibonacci numbers FAILED [116]
+  fib4
+    fib4 0 == 0 FAILED [117]
+    fib4 1 == 1 FAILED [118]
+    fib4 5 == 5 FAILED [119]
+    fib4 100 == 354224848179261915075 FAILED [120]
+Week 07
+  +++
+    concats two JoinLists FAILED [121]
+  indexJ
+    returns Nothing for positive index out of bounds FAILED [122]
+    returns Nothing for negative index FAILED [123]
+    returns correct value for index in bounds FAILED [124]
+  dropJ
+    dropping from empty list gives empty list FAILED [125]
+    dropping more elements than are in list gives empty list FAILED [126]
+    joinListToList (dropJ n jl) == drop n (joinListToList jl) FAILED [127]
+  takeJ
+    taking from empty list gives empty list FAILED [128]
+    taking more than the length of the list gives the whole list FAILED [129]
+    joinListToList (takeJ n jl) == take n (joinListToList jl) FAILED [130]
+  scoreString
+    scores empty string as 0 FAILED [131]
+    scores string of special chars as 0 FAILED [132]
+    scores 'cat' as 5 FAILED [133]
+    scores 'dog' as 5 FAILED [134]
+    scores 'quickly' as 25 FAILED [135]
+    scores 'pizzazz' as 45 FAILED [136]
+  scoreLine
+    scoreLine '' == Single (Score 0) '' FAILED [137]
+    scoreLine 'cat' == Single (Score 5) 'cat' FAILED [138]
+    scoreLine 'quickly' == Single (Score 25) 'quickly' FAILED [139]
+    scoreLine 'yay ' +++ scoreLine 'haskell!' is correct join list FAILED [140]
+  instance Buffer (JoinList (Score, Size) String)
+    toString
+      empty join list is empty string FAILED [141]
+      join list with single element should be the single value FAILED [142]
+      join list with 2 elements should be the string concatenation of the values FAILED [143]
+    fromString
+      empty string gives empty list FAILED [144]
+      string without new line => correctly scored single element list FAILED [145]
+      string with newline => correctly scored 2-elem list FAILED [146]
+    line
+      returns Nothing for index out of bounds FAILED [147]
+      returns element at index FAILED [148]
+    replaceLine
+      replacing line in empty list returns empty list FAILED [149]
+      replaceing line with index out of bounds returns input list unchanged FAILED [150]
+      replaces line and score and size remain correct FAILED [151]
+    numLines
+      returns 0 for empty list FAILED [152]
+      returns 1 for singleon list FAILED [153]
+      returns 2 for 2-elem list FAILED [154]
+    value
+      retruns correct score value FAILED [155]
+Week 08
+  glCons
+    adding element to empty list FAILED [156]
+    adding element to non-empty list FAILED [157]
+  instance Monoid GuestList
+    satisfies the right identity law FAILED [158]
+    satisfies the left identity law FAILED [159]
+    satisifed the associativity law FAILED [160]
+  moreFun
+    chooses funnest list FAILED [161]
+  nextLevel
+    employee has no subtrees FAILED [162]
+    employee has single subtree FAILED [163]
+    employee has many subtrees FAILED [164]
+  maxFunSpec
+    single node tree FAILED [165]
+    multi-node tree FAILED [166]
+  evaluating company.txt
+    should have 458 guests, with a fun total of 21669 FAILED [167]
+Week 10
+  Functor
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    46 ┃ functorSpec :: Spec
+    47 ┃ functorSpec = describe "Functor" $ do
+    48 ┃   it "preserves identity" $ require $ property $ do
+    49 ┃     c <- forAll Gen.unicode
+       ┃     │ '\NUL'
+    50 ┃     s <- forAll unicodeString
+       ┃     │ ""
+    51 ┃     runParser (id (char c)) s === runParser (fmap id (char c)) s
+       ┃     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃     │ ━━━ Exception (ErrorCall) ━━━
+       ┃     │ Week10.AParser#fmap not implemented
+       ┃     │ CallStack (from HasCallStack):
+       ┃     │   error, called at src/Week10/AParser.hs:43:10 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+    52 ┃ 
+    53 ┃   it "preserves composition" $ require $ property $ do
+    54 ┃     c <- forAll Gen.unicode
+    55 ┃     s <- forAll unicodeString
+    56 ┃     runParser ((fmap ord . fmap toUpper) (char c)) s
+    57 ┃       === runParser (fmap (ord . toUpper) (char c)) s
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 6107811928743061835 14756275671249258419) <property>
+  
+    preserves identity FAILED [168]
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    46 ┃ functorSpec :: Spec
+    47 ┃ functorSpec = describe "Functor" $ do
+    48 ┃   it "preserves identity" $ require $ property $ do
+    49 ┃     c <- forAll Gen.unicode
+    50 ┃     s <- forAll unicodeString
+    51 ┃     runParser (id (char c)) s === runParser (fmap id (char c)) s
+    52 ┃ 
+    53 ┃   it "preserves composition" $ require $ property $ do
+    54 ┃     c <- forAll Gen.unicode
+       ┃     │ '\NUL'
+    55 ┃     s <- forAll unicodeString
+       ┃     │ ""
+    56 ┃     runParser ((fmap ord . fmap toUpper) (char c)) s
+    57 ┃       === runParser (fmap (ord . toUpper) (char c)) s
+       ┃       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃       │ ━━━ Exception (ErrorCall) ━━━
+       ┃       │ Week10.AParser#fmap not implemented
+       ┃       │ CallStack (from HasCallStack):
+       ┃       │   error, called at src/Week10/AParser.hs:43:10 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 18211899777148231634 2473769817047772905) <property>
+  
+    preserves composition FAILED [169]
+  Applicative
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    59 ┃ applicativeSpec :: Spec
+    60 ┃ applicativeSpec = describe "Applicative" $ do
+    61 ┃   it "preserves identity" $ require $ property $ do
+    62 ┃     c <- forAll Gen.unicode
+       ┃     │ '\NUL'
+    63 ┃     s <- forAll unicodeString
+       ┃     │ ""
+    64 ┃     runParser (id (char c)) s === runParser (pure id <*> char c) s
+       ┃     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃     │ ━━━ Exception (ErrorCall) ━━━
+       ┃     │ Week10.AParser#(<*>) not implemented
+       ┃     │ CallStack (from HasCallStack):
+       ┃     │   error, called at src/Week10/AParser.hs:52:11 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+    65 ┃ 
+    66 ┃   it "preserves composition" $ require $ property $ do
+    67 ┃     c <- forAll Gen.unicode
+    68 ┃     s <- forAll unicodeString
+    69 ┃     runParser (pure (.) <*> pure ord <*> pure toUpper <*> char c) s
+    70 ┃       === runParser (pure ord <*> (pure toUpper <*> char c)) s
+    71 ┃ 
+    72 ┃   it "is homomorphic" $ require $ property $ do
+    73 ┃     c <- forAll Gen.unicode
+    74 ┃     s <- forAll unicodeString
+    75 ┃     runParser (pure toUpper <*> pure c) s === runParser (pure (toUpper c)) s
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 215161102745669555 2796302122674582231) <property>
+  
+    preserves identity FAILED [170]
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    59 ┃ applicativeSpec :: Spec
+    60 ┃ applicativeSpec = describe "Applicative" $ do
+    61 ┃   it "preserves identity" $ require $ property $ do
+    62 ┃     c <- forAll Gen.unicode
+    63 ┃     s <- forAll unicodeString
+    64 ┃     runParser (id (char c)) s === runParser (pure id <*> char c) s
+    65 ┃ 
+    66 ┃   it "preserves composition" $ require $ property $ do
+    67 ┃     c <- forAll Gen.unicode
+       ┃     │ '\NUL'
+    68 ┃     s <- forAll unicodeString
+       ┃     │ ""
+    69 ┃     runParser (pure (.) <*> pure ord <*> pure toUpper <*> char c) s
+    70 ┃       === runParser (pure ord <*> (pure toUpper <*> char c)) s
+       ┃       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃       │ ━━━ Exception (ErrorCall) ━━━
+       ┃       │ Week10.AParser#(<*>) not implemented
+       ┃       │ CallStack (from HasCallStack):
+       ┃       │   error, called at src/Week10/AParser.hs:52:11 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+    71 ┃ 
+    72 ┃   it "is homomorphic" $ require $ property $ do
+    73 ┃     c <- forAll Gen.unicode
+    74 ┃     s <- forAll unicodeString
+    75 ┃     runParser (pure toUpper <*> pure c) s === runParser (pure (toUpper c)) s
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 8887157335148552107 2852340581650629067) <property>
+  
+    preserves composition FAILED [171]
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    59 ┃ applicativeSpec :: Spec
+    60 ┃ applicativeSpec = describe "Applicative" $ do
+    61 ┃   it "preserves identity" $ require $ property $ do
+    62 ┃     c <- forAll Gen.unicode
+    63 ┃     s <- forAll unicodeString
+    64 ┃     runParser (id (char c)) s === runParser (pure id <*> char c) s
+    65 ┃ 
+    66 ┃   it "preserves composition" $ require $ property $ do
+    67 ┃     c <- forAll Gen.unicode
+    68 ┃     s <- forAll unicodeString
+    69 ┃     runParser (pure (.) <*> pure ord <*> pure toUpper <*> char c) s
+    70 ┃       === runParser (pure ord <*> (pure toUpper <*> char c)) s
+    71 ┃ 
+    72 ┃   it "is homomorphic" $ require $ property $ do
+    73 ┃     c <- forAll Gen.unicode
+       ┃     │ '\NUL'
+    74 ┃     s <- forAll unicodeString
+       ┃     │ ""
+    75 ┃     runParser (pure toUpper <*> pure c) s === runParser (pure (toUpper c)) s
+       ┃     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃     │ ━━━ Exception (ErrorCall) ━━━
+       ┃     │ Week10.AParser#(<*>) not implemented
+       ┃     │ CallStack (from HasCallStack):
+       ┃     │   error, called at src/Week10/AParser.hs:52:11 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 10384088421887031171 11351758427008068935) <property>
+  
+    is homomorphic FAILED [172]
+  abParser
+  ✗ <interactive> failed after 1 test.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    77 ┃ abParserSpec :: Spec
+    78 ┃ abParserSpec =
+    79 ┃   describe "abParser"
+    80 ┃     $ it "expects to see the characters 'a' and 'b' and returns them as a pair"
+    81 ┃     $ require
+    82 ┃     $ property
+    83 ┃     $ do
+    84 ┃         s <- forAll unicodeString
+       ┃         │ ""
+    85 ┃         runParser abParser ("ab" ++ s) === Just (('a', 'b'), s)
+       ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃         │ ━━━ Exception (ErrorCall) ━━━
+       ┃         │ Week10.AParser#abParser not implemented
+       ┃         │ CallStack (from HasCallStack):
+       ┃         │   error, called at src/Week10/AParser.hs:57:12 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+    86 ┃         runParser abParser (dropWhile ('a' ==) s) === Nothing
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 16126955664466762690 12064425223689760993) <property>
+  
+    expects to see the characters 'a' and 'b' and returns them as a pair FAILED [173]
+  abParser_
+  ✗ <interactive> failed after 1 test.
+  
+       ┏━━ test/Week10/AParserSpec.hs ━━━
+    88 ┃ abParser_Spec :: Spec
+    89 ┃ abParser_Spec =
+    90 ┃   describe "abParser_"
+    91 ┃     $ it "expects to see the characters 'a' and 'b' and returns ()"
+    92 ┃     $ require
+    93 ┃     $ property
+    94 ┃     $ do
+    95 ┃         s <- forAll unicodeString
+       ┃         │ ""
+    96 ┃         runParser abParser_ ("ab" ++ s) === Just ((), s)
+       ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃         │ ━━━ Exception (ErrorCall) ━━━
+       ┃         │ Week10.AParser#abParser_ not implemented
+       ┃         │ CallStack (from HasCallStack):
+       ┃         │   error, called at src/Week10/AParser.hs:60:13 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+    97 ┃         runParser abParser_ (dropWhile ('a' ==) s) === Nothing
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 3115137234069922240 2162810988527414057) <property>
+  
+    expects to see the characters 'a' and 'b' and returns () FAILED [174]
+  intPair
+  ✗ <interactive> failed after 1 test.
+  
+        ┏━━ test/Week10/AParserSpec.hs ━━━
+     99 ┃ intPairSpec :: Spec
+    100 ┃ intPairSpec =
+    101 ┃   describe "intPair"
+    102 ┃     $ it
+    103 ┃         "reads two integer values separated by a space and returns the integer values in a list"
+    104 ┃     $ require
+    105 ┃     $ property
+    106 ┃     $ do
+    107 ┃         n <- forAll $ Gen.int (Range.linear 0 100)
+        ┃         │ 0
+    108 ┃         m <- forAll $ Gen.int (Range.linear 0 100)
+        ┃         │ 0
+    109 ┃         runParser intPair (unwords (map show [n, m])) === Just ([n, m], "")
+        ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃         │ ━━━ Exception (ErrorCall) ━━━
+        ┃         │ Week10.AParser#intPair not implemented
+        ┃         │ CallStack (from HasCallStack):
+        ┃         │   error, called at src/Week10/AParser.hs:63:11 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 7460847601853466078 9435238549033544275) <property>
+  
+    reads two integer values separated by a space and returns the integer values in a list FAILED [175]
+  intOrUppercase
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+        ┏━━ test/Week10/AParserSpec.hs ━━━
+    111 ┃ intOrUppercaseSpec :: Spec
+    112 ┃ intOrUppercaseSpec =
+    113 ┃   describe "intOrUppercase"
+    114 ┃     $ it
+    115 ┃         "parses either an integer value or an uppercase character, and fails otherwise"
+    116 ┃     $ require
+    117 ┃     $ property
+    118 ┃     $ do
+    119 ┃         n     <- forAll $ Gen.int (Range.linear 0 100)
+        ┃         │ 0
+    120 ┃         c     <- forAll Gen.upper
+        ┃         │ 'A'
+    121 ┃         lower <- forAll $ Gen.string (Range.linear 0 100) Gen.lower
+        ┃         │ ""
+    122 ┃         upper <- forAll $ Gen.string (Range.linear 0 100) Gen.upper
+        ┃         │ ""
+    123 ┃         runParser intOrUppercase (show n ++ lower) === Just ((), lower)
+        ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃         │ ━━━ Exception (ErrorCall) ━━━
+        ┃         │ Week10.AParser#intOrUppercase not implemented
+        ┃         │ CallStack (from HasCallStack):
+        ┃         │   error, called at src/Week10/AParser.hs:77:18 in stacktrace-cis194-0.1.0.0-inplace:Week10.AParser
+    124 ┃         runParser intOrUppercase (show n ++ upper) === Just ((), upper)
+    125 ┃         runParser intOrUppercase (c : lower) === Just ((), lower)
+    126 ┃         runParser intOrUppercase (c : upper) === Just ((), upper)
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 7682368055730740404 11567472185860338561) <property>
+  
+    parses either an integer value or an uppercase character, and fails otherwise FAILED [176]
+Week 11
+  zeroOrMore
+  ✗ <interactive> failed after 1 test.
+  
+       ┏━━ test/Week11/SExprSpec.hs ━━━
+    72 ┃ zeroOrMoreSpec :: Spec
+    73 ┃ zeroOrMoreSpec =
+    74 ┃   describe "zeroOrMore"
+    75 ┃     $ it "parses zero or more occurences from start"
+    76 ┃     $ require
+    77 ┃     $ property
+    78 ┃     $ do
+    79 ┃         uppers <- forAll $ upperCaseString (0, 100)
+       ┃         │ ""
+    80 ┃         lowers <- forAll $ lowerCaseString (0, 100)
+       ┃         │ ""
+    81 ┃         let input = uppers <> lowers
+    82 ┃         runParser (zeroOrMore (satisfy isUpper)) input === Just (uppers, lowers)
+       ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃         │ ━━━ Exception (ErrorCall) ━━━
+       ┃         │ Week11.SExpr#zeroOrMore not implemented
+       ┃         │ CallStack (from HasCallStack):
+       ┃         │   error, called at src/Week11/SExpr.hs:18:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 6875236141343647192 12036768916855051607) <property>
+  
+    parses zero or more occurences from start FAILED [177]
+  oneOrMore
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week11/SExprSpec.hs ━━━
+    84 ┃ oneOrMoreSpec :: Spec
+    85 ┃ oneOrMoreSpec = describe "oneOrMore" $ do
+    86 ┃   it "parses one or more occurences from start" $ require $ property $ do
+    87 ┃     uppers <- forAll $ upperCaseString (1, 100)
+       ┃     │ "A"
+    88 ┃     lowers <- forAll $ lowerCaseString (0, 100)
+       ┃     │ ""
+    89 ┃     let input = uppers <> lowers
+    90 ┃     runParser (oneOrMore (satisfy isUpper)) input === Just (uppers, lowers)
+       ┃     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃     │ ━━━ Exception (ErrorCall) ━━━
+       ┃     │ Week11.SExpr#oneOrMore not implemented
+       ┃     │ CallStack (from HasCallStack):
+       ┃     │   error, called at src/Week11/SExpr.hs:21:13 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+    91 ┃   it "fails when no matches at start" $ require $ property $ do
+    92 ┃     digits <- forAll $ digitString (1, 100)
+    93 ┃     uppers <- forAll $ upperCaseString (0, 100)
+    94 ┃     let input = digits <> uppers
+    95 ┃     runParser (oneOrMore (satisfy isUpper)) input === Nothing
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 12008437055374099513 15952509571258939321) <property>
+  
+    parses one or more occurences from start FAILED [178]
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+       ┏━━ test/Week11/SExprSpec.hs ━━━
+    84 ┃ oneOrMoreSpec :: Spec
+    85 ┃ oneOrMoreSpec = describe "oneOrMore" $ do
+    86 ┃   it "parses one or more occurences from start" $ require $ property $ do
+    87 ┃     uppers <- forAll $ upperCaseString (1, 100)
+    88 ┃     lowers <- forAll $ lowerCaseString (0, 100)
+    89 ┃     let input = uppers <> lowers
+    90 ┃     runParser (oneOrMore (satisfy isUpper)) input === Just (uppers, lowers)
+    91 ┃   it "fails when no matches at start" $ require $ property $ do
+    92 ┃     digits <- forAll $ digitString (1, 100)
+       ┃     │ "0"
+    93 ┃     uppers <- forAll $ upperCaseString (0, 100)
+       ┃     │ ""
+    94 ┃     let input = digits <> uppers
+    95 ┃     runParser (oneOrMore (satisfy isUpper)) input === Nothing
+       ┃     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       ┃     │ ━━━ Exception (ErrorCall) ━━━
+       ┃     │ Week11.SExpr#oneOrMore not implemented
+       ┃     │ CallStack (from HasCallStack):
+       ┃     │   error, called at src/Week11/SExpr.hs:21:13 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 16731214384240613168 9546240974048093623) <property>
+  
+    fails when no matches at start FAILED [179]
+  spaces
+  ✗ <interactive> failed after 1 test.
+  
+        ┏━━ test/Week11/SExprSpec.hs ━━━
+     97 ┃ spacesSpec :: Spec
+     98 ┃ spacesSpec =
+     99 ┃   describe "spaces"
+    100 ┃     $ it "parses zero or more spaces from the start"
+    101 ┃     $ require
+    102 ┃     $ property
+    103 ┃     $ do
+    104 ┃         numSpaces <- forAll $ Gen.int (Range.linear 0 100)
+        ┃         │ 0
+    105 ┃         rest      <- forAll $ alphaNumString (0, 100)
+        ┃         │ ""
+    106 ┃         let spaceStr = replicate numSpaces ' '
+    107 ┃         let input    = spaceStr <> rest
+    108 ┃         runParser spaces input === Just (spaceStr, rest)
+        ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃         │ ━━━ Exception (ErrorCall) ━━━
+        ┃         │ Week11.SExpr#spaces not implemented
+        ┃         │ CallStack (from HasCallStack):
+        ┃         │   error, called at src/Week11/SExpr.hs:27:10 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 4433311794128357807 5517884386780202845) <property>
+  
+    parses zero or more spaces from the start FAILED [180]
+  ident
+  ✗ <interactive> failed after 1 test and 3 shrinks.
+  
+        ┏━━ test/Week11/SExprSpec.hs ━━━
+    110 ┃ identSpec :: Spec
+    111 ┃ identSpec = describe "ident" $ do
+    112 ┃   it "successfully parses identifier from strings starting with alphas"
+    113 ┃     $ require
+    114 ┃     $ property
+    115 ┃     $ do
+    116 ┃         let seperators = [' ', '!', '$', '^', '\t', '\n']
+    117 ┃         identifer <- forAll $ alphaString (1, 100)
+        ┃         │ "a"
+    118 ┃         sep       <- forAll $ Gen.choice $ Gen.constant <$> seperators
+        ┃         │ ' '
+    119 ┃         rest      <- forAll $ alphaNumString (1, 100)
+        ┃         │ "a"
+    120 ┃         let input = identifer <> [sep] <> rest
+    121 ┃         runParser ident input === Just (identifer, [sep] <> rest)
+        ┃         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃         │ ━━━ Exception (ErrorCall) ━━━
+        ┃         │ Week11.SExpr#ident not implemented
+        ┃         │ CallStack (from HasCallStack):
+        ┃         │   error, called at src/Week11/SExpr.hs:30:9 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+    122 ┃   it "fails when first char is not an alpha" $ require $ property $ do
+    123 ┃     start <- forAll $ digitString (1, 50)
+    124 ┃     rest  <- forAll $ alphaString (0, 100)
+    125 ┃     let input = start <> rest
+    126 ┃     runParser ident input === Nothing
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 17733458792615359300 14201726250291702277) <property>
+  
+    successfully parses identifier from strings starting with alphas FAILED [181]
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+        ┏━━ test/Week11/SExprSpec.hs ━━━
+    110 ┃ identSpec :: Spec
+    111 ┃ identSpec = describe "ident" $ do
+    112 ┃   it "successfully parses identifier from strings starting with alphas"
+    113 ┃     $ require
+    114 ┃     $ property
+    115 ┃     $ do
+    116 ┃         let seperators = [' ', '!', '$', '^', '\t', '\n']
+    117 ┃         identifer <- forAll $ alphaString (1, 100)
+    118 ┃         sep       <- forAll $ Gen.choice $ Gen.constant <$> seperators
+    119 ┃         rest      <- forAll $ alphaNumString (1, 100)
+    120 ┃         let input = identifer <> [sep] <> rest
+    121 ┃         runParser ident input === Just (identifer, [sep] <> rest)
+    122 ┃   it "fails when first char is not an alpha" $ require $ property $ do
+    123 ┃     start <- forAll $ digitString (1, 50)
+        ┃     │ "0"
+    124 ┃     rest  <- forAll $ alphaString (0, 100)
+        ┃     │ ""
+    125 ┃     let input = start <> rest
+    126 ┃     runParser ident input === Nothing
+        ┃     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃     │ ━━━ Exception (ErrorCall) ━━━
+        ┃     │ Week11.SExpr#ident not implemented
+        ┃     │ CallStack (from HasCallStack):
+        ┃     │   error, called at src/Week11/SExpr.hs:30:9 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 2459835621813524360 9288604526672901327) <property>
+  
+    fails when first char is not an alpha FAILED [182]
+  parseSExpr
+    property based...
+  ✗ <interactive> failed after 1 test and 2 shrinks.
+  
+        ┏━━ test/Week11/SExprSpec.hs ━━━
+    161 ┃ parseSExprSpec :: Spec
+    162 ┃ parseSExprSpec = describe "parseSExpr" $ do
+    163 ┃   context "property based..." $ do
+    164 ┃     it "parses single atoms successfully" $ require $ property $ do
+    165 ┃       input <- forAll $ surroundWithZeroOrMore ' ' genAtom
+        ┃       │ "0"
+    166 ┃       runParser parseSExpr input === Just ((A . atom) input, "")
+        ┃       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃       │ ━━━ Exception (ErrorCall) ━━━
+        ┃       │ Week11.SExpr#parseSExpr not implemented
+        ┃       │ CallStack (from HasCallStack):
+        ┃       │   error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+    167 ┃     it "parses single level of atoms inside parens" $ require $ property $ do
+    168 ┃       atoms <- forAll $ Gen.list (Range.linear 1 20) genAtom
+    169 ┃       let input    = "(" <> unwords atoms <> ")"
+    170 ┃       let expected = Comb (sexprs atoms)
+    171 ┃       runParser parseSExpr input === Just (expected, "")
+    172 ┃     it "parses nested SExprs successfully" $ require $ property $ do
+    173 ┃       atoms1 <- forAll $ Gen.list (Range.linear 1 20) genAtom
+    174 ┃       atoms2 <- forAll
+    175 ┃         $ Gen.list (Range.linear 1 20) (surroundWithZeroOrMore ' ' genAtom)
+    176 ┃       atoms3 <- forAll $ Gen.list (Range.linear 1 20) genAtom
+    177 ┃       let input =
+    178 ┃             "(("
+    179 ┃               <> unwords atoms1
+    180 ┃               <> ") "
+    181 ┃               <> unwords atoms2
+    182 ┃               <> "("
+    183 ┃               <> unwords atoms3
+    184 ┃               <> "))"
+    185 ┃       let expected =
+    186 ┃             Comb
+    187 ┃               ([Comb (sexprs atoms1)] ++ sexprs atoms2 ++ [Comb (sexprs atoms3)]
+    188 ┃               )
+    189 ┃       runParser parseSExpr input === Just (expected, "")
+    190 ┃   context "manual..." $ do
+    191 ┃     it "parsing unbalanced parens fails" $ do
+    192 ┃       let input = "((((one)))"
+    193 ┃       runParser parseSExpr input `shouldBe` Nothing
+    194 ┃     it "parsing '(bar (foo) 3 5 874)' succeeds" $ do
+    195 ┃       let input    = "(bar (foo) 3 5 874)"
+    196 ┃       let expected = Comb [ai "bar", Comb [ai "foo"], an 3, an 5, an 874]
+    197 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+    198 ┃     it "parsing '(mul (2 (add (42 56)))' succeeds" $ do
+    199 ┃       let input = "(mul (2 (add (42 56))))"
+    200 ┃       let expected =
+    201 ┃             Comb [ai "mul", Comb [an 2, Comb [ai "add", Comb [an 42, an 56]]]]
+    202 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+    203 ┃     it "parsing '( lots of ( spaces in ) this ( one ) )' succeeds" $ do
+    204 ┃       let input = "( lots of ( spaces in ) this ( one ) )"
+    205 ┃       let expected = Comb
+    206 ┃             [ ai "lots"
+    207 ┃             , ai "of"
+    208 ┃             , Comb [ai "spaces", ai "in"]
+    209 ┃             , ai "this"
+    210 ┃             , Comb [ai "one"]
+    211 ┃             ]
+    212 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 12107589252544669314 7740223234553110929) <property>
+  
+      parses single atoms successfully FAILED [183]
+  ✗ <interactive> failed after 1 test and 1 shrink.
+  
+        ┏━━ test/Week11/SExprSpec.hs ━━━
+    161 ┃ parseSExprSpec :: Spec
+    162 ┃ parseSExprSpec = describe "parseSExpr" $ do
+    163 ┃   context "property based..." $ do
+    164 ┃     it "parses single atoms successfully" $ require $ property $ do
+    165 ┃       input <- forAll $ surroundWithZeroOrMore ' ' genAtom
+    166 ┃       runParser parseSExpr input === Just ((A . atom) input, "")
+    167 ┃     it "parses single level of atoms inside parens" $ require $ property $ do
+    168 ┃       atoms <- forAll $ Gen.list (Range.linear 1 20) genAtom
+        ┃       │ [ "0" ]
+    169 ┃       let input    = "(" <> unwords atoms <> ")"
+    170 ┃       let expected = Comb (sexprs atoms)
+    171 ┃       runParser parseSExpr input === Just (expected, "")
+        ┃       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃       │ ━━━ Exception (ErrorCall) ━━━
+        ┃       │ Week11.SExpr#parseSExpr not implemented
+        ┃       │ CallStack (from HasCallStack):
+        ┃       │   error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+    172 ┃     it "parses nested SExprs successfully" $ require $ property $ do
+    173 ┃       atoms1 <- forAll $ Gen.list (Range.linear 1 20) genAtom
+    174 ┃       atoms2 <- forAll
+    175 ┃         $ Gen.list (Range.linear 1 20) (surroundWithZeroOrMore ' ' genAtom)
+    176 ┃       atoms3 <- forAll $ Gen.list (Range.linear 1 20) genAtom
+    177 ┃       let input =
+    178 ┃             "(("
+    179 ┃               <> unwords atoms1
+    180 ┃               <> ") "
+    181 ┃               <> unwords atoms2
+    182 ┃               <> "("
+    183 ┃               <> unwords atoms3
+    184 ┃               <> "))"
+    185 ┃       let expected =
+    186 ┃             Comb
+    187 ┃               ([Comb (sexprs atoms1)] ++ sexprs atoms2 ++ [Comb (sexprs atoms3)]
+    188 ┃               )
+    189 ┃       runParser parseSExpr input === Just (expected, "")
+    190 ┃   context "manual..." $ do
+    191 ┃     it "parsing unbalanced parens fails" $ do
+    192 ┃       let input = "((((one)))"
+    193 ┃       runParser parseSExpr input `shouldBe` Nothing
+    194 ┃     it "parsing '(bar (foo) 3 5 874)' succeeds" $ do
+    195 ┃       let input    = "(bar (foo) 3 5 874)"
+    196 ┃       let expected = Comb [ai "bar", Comb [ai "foo"], an 3, an 5, an 874]
+    197 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+    198 ┃     it "parsing '(mul (2 (add (42 56)))' succeeds" $ do
+    199 ┃       let input = "(mul (2 (add (42 56))))"
+    200 ┃       let expected =
+    201 ┃             Comb [ai "mul", Comb [an 2, Comb [ai "add", Comb [an 42, an 56]]]]
+    202 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+    203 ┃     it "parsing '( lots of ( spaces in ) this ( one ) )' succeeds" $ do
+    204 ┃       let input = "( lots of ( spaces in ) this ( one ) )"
+    205 ┃       let expected = Comb
+    206 ┃             [ ai "lots"
+    207 ┃             , ai "of"
+    208 ┃             , Comb [ai "spaces", ai "in"]
+    209 ┃             , ai "this"
+    210 ┃             , Comb [ai "one"]
+    211 ┃             ]
+    212 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 1588888826811193864 17996116500459309671) <property>
+  
+      parses single level of atoms inside parens FAILED [184]
+  ✗ <interactive> failed after 1 test and 3 shrinks.
+  
+        ┏━━ test/Week11/SExprSpec.hs ━━━
+    161 ┃ parseSExprSpec :: Spec
+    162 ┃ parseSExprSpec = describe "parseSExpr" $ do
+    163 ┃   context "property based..." $ do
+    164 ┃     it "parses single atoms successfully" $ require $ property $ do
+    165 ┃       input <- forAll $ surroundWithZeroOrMore ' ' genAtom
+    166 ┃       runParser parseSExpr input === Just ((A . atom) input, "")
+    167 ┃     it "parses single level of atoms inside parens" $ require $ property $ do
+    168 ┃       atoms <- forAll $ Gen.list (Range.linear 1 20) genAtom
+    169 ┃       let input    = "(" <> unwords atoms <> ")"
+    170 ┃       let expected = Comb (sexprs atoms)
+    171 ┃       runParser parseSExpr input === Just (expected, "")
+    172 ┃     it "parses nested SExprs successfully" $ require $ property $ do
+    173 ┃       atoms1 <- forAll $ Gen.list (Range.linear 1 20) genAtom
+        ┃       │ [ "0" ]
+    174 ┃       atoms2 <- forAll
+    175 ┃         $ Gen.list (Range.linear 1 20) (surroundWithZeroOrMore ' ' genAtom)
+        ┃         │ [ "0" ]
+    176 ┃       atoms3 <- forAll $ Gen.list (Range.linear 1 20) genAtom
+        ┃       │ [ "0" ]
+    177 ┃       let input =
+    178 ┃             "(("
+    179 ┃               <> unwords atoms1
+    180 ┃               <> ") "
+    181 ┃               <> unwords atoms2
+    182 ┃               <> "("
+    183 ┃               <> unwords atoms3
+    184 ┃               <> "))"
+    185 ┃       let expected =
+    186 ┃             Comb
+    187 ┃               ([Comb (sexprs atoms1)] ++ sexprs atoms2 ++ [Comb (sexprs atoms3)]
+    188 ┃               )
+    189 ┃       runParser parseSExpr input === Just (expected, "")
+        ┃       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ┃       │ ━━━ Exception (ErrorCall) ━━━
+        ┃       │ Week11.SExpr#parseSExpr not implemented
+        ┃       │ CallStack (from HasCallStack):
+        ┃       │   error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+    190 ┃   context "manual..." $ do
+    191 ┃     it "parsing unbalanced parens fails" $ do
+    192 ┃       let input = "((((one)))"
+    193 ┃       runParser parseSExpr input `shouldBe` Nothing
+    194 ┃     it "parsing '(bar (foo) 3 5 874)' succeeds" $ do
+    195 ┃       let input    = "(bar (foo) 3 5 874)"
+    196 ┃       let expected = Comb [ai "bar", Comb [ai "foo"], an 3, an 5, an 874]
+    197 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+    198 ┃     it "parsing '(mul (2 (add (42 56)))' succeeds" $ do
+    199 ┃       let input = "(mul (2 (add (42 56))))"
+    200 ┃       let expected =
+    201 ┃             Comb [ai "mul", Comb [an 2, Comb [ai "add", Comb [an 42, an 56]]]]
+    202 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+    203 ┃     it "parsing '( lots of ( spaces in ) this ( one ) )' succeeds" $ do
+    204 ┃       let input = "( lots of ( spaces in ) this ( one ) )"
+    205 ┃       let expected = Comb
+    206 ┃             [ ai "lots"
+    207 ┃             , ai "of"
+    208 ┃             , Comb [ai "spaces", ai "in"]
+    209 ┃             , ai "this"
+    210 ┃             , Comb [ai "one"]
+    211 ┃             ]
+    212 ┃       runParser parseSExpr input `shouldBe` Just (expected, "")
+  
+    This failure can be reproduced by running:
+    > recheck (Size 0) (Seed 8359534845411792501 1542979099360453619) <property>
+  
+      parses nested SExprs successfully FAILED [185]
+    manual...
+      parsing unbalanced parens fails FAILED [186]
+      parsing '(bar (foo) 3 5 874)' succeeds FAILED [187]
+      parsing '(mul (2 (add (42 56)))' succeeds FAILED [188]
+      parsing '( lots of ( spaces in ) this ( one ) )' succeeds FAILED [189]
+
+Failures:
+
+  src/Week01/CreditCardValidator.hs:11:12: 
+  1) CreditCardValidator.toDigits converts positive Integers to a list of digits
+       uncaught exception: ErrorCall
+       Week01.CreditCardValidator#toDigits not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week01/CreditCardValidator.hs:11:12 in stacktrace-cis194-0.1.0.0-inplace:Week01.CreditCardValidator
+
+  To rerun use: --match "/CreditCardValidator/toDigits/converts positive Integers to a list of digits/"
+
+  src/Week01/CreditCardValidator.hs:14:15: 
+  2) CreditCardValidator.toDigitsRev does what toDigits does in reverse
+       uncaught exception: ErrorCall
+       Week01.CreditCardValidator#toDigitsRev not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week01/CreditCardValidator.hs:14:15 in stacktrace-cis194-0.1.0.0-inplace:Week01.CreditCardValidator
+
+  To rerun use: --match "/CreditCardValidator/toDigitsRev/does what toDigits does in reverse/"
+
+  src/Week01/CreditCardValidator.hs:18:3: 
+  3) CreditCardValidator.doubleEveryOther doubles every second digit starting from the second last
+       uncaught exception: ErrorCall
+       Week01.CreditCardValidator#doubleEveryOther not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week01/CreditCardValidator.hs:18:3 in stacktrace-cis194-0.1.0.0-inplace:Week01.CreditCardValidator
+
+  To rerun use: --match "/CreditCardValidator/doubleEveryOther/doubles every second digit starting from the second last/"
+
+  src/Week01/CreditCardValidator.hs:21:13: 
+  4) CreditCardValidator.sumDigits sums the sum of the digits of all numbers in a list
+       uncaught exception: ErrorCall
+       Week01.CreditCardValidator#sumDigits not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week01/CreditCardValidator.hs:21:13 in stacktrace-cis194-0.1.0.0-inplace:Week01.CreditCardValidator
+
+  To rerun use: --match "/CreditCardValidator/sumDigits/sums the sum of the digits of all numbers in a list/"
+
+  src/Week01/CreditCardValidator.hs:24:12: 
+  5) CreditCardValidator.validate indicates whether an Integer could be a valid credit card number
+       uncaught exception: ErrorCall
+       Week01.CreditCardValidator#validate not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week01/CreditCardValidator.hs:24:12 in stacktrace-cis194-0.1.0.0-inplace:Week01.CreditCardValidator
+
+  To rerun use: --match "/CreditCardValidator/validate/indicates whether an Integer could be a valid credit card number/"
+
+  src/Week02/LogAnalysis.hs:21:16: 
+  6) LogAnalysis.parseMessage converts a log line into a LogMessage
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#parseMessage not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:21:16 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/parseMessage/converts a log line into a LogMessage/"
+
+  src/Week02/LogAnalysis.hs:24:9: 
+  7) LogAnalysis.parse converts many log lines into a list of log messages
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#parse not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:24:9 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/parse/converts many log lines into a list of log messages/"
+
+  src/Week02/LogAnalysis.hs:24:9: 
+  8) LogAnalysis.parse returns empty list for empty string
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#parse not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:24:9 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/parse/returns empty list for empty string/"
+
+  src/Week02/LogAnalysis.hs:24:9: 
+  9) LogAnalysis.parse returns singleton list for input without new lines
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#parse not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:24:9 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/parse/returns singleton list for input without new lines/"
+
+  src/Week02/LogAnalysis.hs:27:10: 
+  10) LogAnalysis.insert inserts a LogMessage into an empty tree, producing a single-node tree
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#insert not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:27:10 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/insert/inserts a LogMessage into an empty tree, producing a single-node tree/"
+
+  src/Week02/LogAnalysis.hs:27:10: 
+  11) LogAnalysis.insert inserts a new LogMessage into a sorted MessageTree, producing a new sorted MessageTree
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#insert not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:27:10 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/insert/inserts a new LogMessage into a sorted MessageTree, producing a new sorted MessageTree/"
+
+  src/Week02/LogAnalysis.hs:27:10: 
+  12) LogAnalysis.insert does not insert LogMessages of type 'Unknown'
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#insert not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:27:10 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/insert/does not insert LogMessages of type 'Unknown'/"
+
+  src/Week02/LogAnalysis.hs:30:9: 
+  13) LogAnalysis.build builds an empty tree when given no log messages
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#build not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:30:9 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/build/builds an empty tree when given no log messages/"
+
+  src/Week02/LogAnalysis.hs:30:9: 
+  14) LogAnalysis.build builds a complete MessageTree from a list of unqique messages
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#build not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:30:9 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/build/builds a complete MessageTree from a list of unqique messages/"
+
+  src/Week02/LogAnalysis.hs:33:11: 
+  15) LogAnalysis.inOrder returns an empty list when given an empty MessageTree
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#inOrder not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:33:11 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/inOrder/returns an empty list when given an empty MessageTree/"
+
+  src/Week02/LogAnalysis.hs:33:11: 
+  16) LogAnalysis.inOrder returns an singlton list when given a single-node tree
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#inOrder not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:33:11 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/inOrder/returns an singlton list when given a single-node tree/"
+
+  src/Week02/LogAnalysis.hs:33:11: 
+  17) LogAnalysis.inOrder takes a sorted MessageTree and produces a list of all the LogMessages it contains, sorted by timestamp from smallest to biggest
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#inOrder not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:33:11 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/inOrder/takes a sorted MessageTree and produces a list of all the LogMessages it contains, sorted by timestamp from smallest to biggest/"
+
+  src/Week02/LogAnalysis.hs:36:17: 
+  18) LogAnalysis.whatWentWrong takes an unsorted list of LogMessage s, and returns a list of the messages corresponding to any errors with a severity of 50 or greater, sorted by timestamp
+       uncaught exception: ErrorCall
+       Week02.LogAnalysis#whatWentWrong not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week02/LogAnalysis.hs:36:17 in stacktrace-cis194-0.1.0.0-inplace:Week02.LogAnalysis
+
+  To rerun use: --match "/LogAnalysis/whatWentWrong/takes an unsorted list of LogMessage s, and returns a list of the messages corresponding to any errors with a severity of 50 or greater, sorted by timestamp/"
+
+  src/Week03/Golf.hs:9:9: 
+  19) Golf.skips returns the correct list
+       uncaught exception: ErrorCall
+       Week03.Golf#skips not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week03/Golf.hs:9:9 in stacktrace-cis194-0.1.0.0-inplace:Week03.Golf
+
+  To rerun use: --match "/Golf/skips/returns the correct list/"
+
+  src/Week03/Golf.hs:12:15: 
+  20) Golf.localMaxima finds all local maxima
+       uncaught exception: ErrorCall
+       Week03.Golf#localMaxima not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week03/Golf.hs:12:15 in stacktrace-cis194-0.1.0.0-inplace:Week03.Golf
+
+  To rerun use: --match "/Golf/localMaxima/finds all local maxima/"
+
+  src/Week03/Golf.hs:15:13: 
+  21) Golf.histogram returns the correct histogram representation
+       uncaught exception: ErrorCall
+       Week03.Golf#histogram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week03/Golf.hs:15:13 in stacktrace-cis194-0.1.0.0-inplace:Week03.Golf
+
+  To rerun use: --match "/Golf/histogram/returns the correct histogram representation/"
+
+  src/Week04/Soln.hs:26:9: 
+  22) Week 04, fun1', the 'wholemeal' version of fun1, fun1' xs == fun1 xs
+       uncaught exception: ErrorCall
+       Week04.Soln#fun2' not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:26:9 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/fun1', the 'wholemeal' version of fun1/fun1' xs == fun1 xs/"
+
+  src/Week04/Soln.hs:34:9: 
+  23) Week 04, fun2', the 'wholemeal' version of fun2, fun2' x == fun2 x
+       uncaught exception: ErrorCall
+       Week04.Soln#fun2' not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:34:9 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/fun2', the 'wholemeal' version of fun2/fun2' x == fun2 x/"
+
+  src/Week04/Soln.hs:41:12: 
+  24) Week 04, foldTree, produces a single leaf for an empty list
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces a single leaf for an empty list/"
+
+  src/Week04/Soln.hs:41:12: 
+  25) Week 04, foldTree, produces a tree of height 0 for a singleton list
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces a tree of height 0 for a singleton list/"
+
+  src/Week04/Soln.hs:41:12: 
+  26) Week 04, foldTree, produces trees of the correct height, height of foldTree 'ABC' == 1
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees of the correct height/height of foldTree 'ABC' == 1/"
+
+  src/Week04/Soln.hs:41:12: 
+  27) Week 04, foldTree, produces trees of the correct height, height of foldTree 'ABCD' == 2
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees of the correct height/height of foldTree 'ABCD' == 2/"
+
+  src/Week04/Soln.hs:41:12: 
+  28) Week 04, foldTree, produces trees of the correct height, height of foldTree 'ABCDEFGHIJ' == 3
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees of the correct height/height of foldTree 'ABCDEFGHIJ' == 3/"
+
+  src/Week04/Soln.hs:41:12: 
+  29) Week 04, foldTree, produces balanced trees, foldTree 'ABC' is balanced
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces balanced trees/foldTree 'ABC' is balanced/"
+
+  src/Week04/Soln.hs:41:12: 
+  30) Week 04, foldTree, produces balanced trees, foldTree 'ABCD' is balanced
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces balanced trees/foldTree 'ABCD' is balanced/"
+
+  src/Week04/Soln.hs:41:12: 
+  31) Week 04, foldTree, produces balanced trees, foldTree 'ABCDEFGHIJ' is balanced
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces balanced trees/foldTree 'ABCDEFGHIJ' is balanced/"
+
+  src/Week04/Soln.hs:41:12: 
+  32) Week 04, foldTree, produces balanced trees, foldTree [1..100] is balanced
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces balanced trees/foldTree [1..100] is balanced/"
+
+  src/Week04/Soln.hs:41:12: 
+  33) Week 04, foldTree, produces trees that contain all the input values, foldTree 'ABC' contains all inputs
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees that contain all the input values/foldTree 'ABC' contains all inputs/"
+
+  src/Week04/Soln.hs:41:12: 
+  34) Week 04, foldTree, produces trees that contain all the input values, foldTree 'ABCD' contains all inputs
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees that contain all the input values/foldTree 'ABCD' contains all inputs/"
+
+  src/Week04/Soln.hs:41:12: 
+  35) Week 04, foldTree, produces trees that contain all the input values, foldTree 'ABCDEFGHIJ' contains all inputs
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees that contain all the input values/foldTree 'ABCDEFGHIJ' contains all inputs/"
+
+  src/Week04/Soln.hs:41:12: 
+  36) Week 04, foldTree, produces trees that contain all the input values, foldTree [1..100] contains all inputs
+       uncaught exception: ErrorCall
+       Week04.Soln#foldTree not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:41:12 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/foldTree/produces trees that contain all the input values/foldTree [1..100] contains all inputs/"
+
+  src/Week04/Soln.hs:65:7: 
+  37) Week 04, xor, xor [] == False
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [] == False/"
+
+  src/Week04/Soln.hs:65:7: 
+  38) Week 04, xor, xor [False] == False
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [False] == False/"
+
+  src/Week04/Soln.hs:65:7: 
+  39) Week 04, xor, xor [True] == True
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [True] == True/"
+
+  src/Week04/Soln.hs:65:7: 
+  40) Week 04, xor, xor [True, True, True] == True
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [True, True, True] == True/"
+
+  src/Week04/Soln.hs:65:7: 
+  41) Week 04, xor, xor [True, True] == False
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [True, True] == False/"
+
+  src/Week04/Soln.hs:65:7: 
+  42) Week 04, xor, xor [False, True, False] == True
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [False, True, False] == True/"
+
+  src/Week04/Soln.hs:65:7: 
+  43) Week 04, xor, xor [False, True, False, False, True] == False
+       uncaught exception: ErrorCall
+       Week04.Soln#xor not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:65:7 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/xor/xor [False, True, False, False, True] == False/"
+
+  src/Week04/Soln.hs:69:8: 
+  44) Week 04, map', map' f [] == map f []
+       uncaught exception: ErrorCall
+       Week04.Soln#map' not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:69:8 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/map'/map' f [] == map f []/"
+
+  src/Week04/Soln.hs:69:8: 
+  45) Week 04, map', map' f [x] == map f [x]
+       uncaught exception: ErrorCall
+       Week04.Soln#map' not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:69:8 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/map'/map' f [x] == map f [x]/"
+
+  src/Week04/Soln.hs:69:8: 
+  46) Week 04, map', map' f [x,y,z] == map f [x,y,z]
+       uncaught exception: ErrorCall
+       Week04.Soln#map' not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:69:8 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/map'/map' f [x,y,z] == map f [x,y,z]/"
+
+  src/Week04/Soln.hs:73:11: 
+  47) Week 04, myFoldlSpec, myFoldl f b [] == foldl f b []
+       uncaught exception: ErrorCall
+       Week04.Soln#myFoldl not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:73:11 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/myFoldlSpec/myFoldl f b [] == foldl f b []/"
+
+  src/Week04/Soln.hs:73:11: 
+  48) Week 04, myFoldlSpec, myFoldl f b [x] == foldl f b [x]
+       uncaught exception: ErrorCall
+       Week04.Soln#myFoldl not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:73:11 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/myFoldlSpec/myFoldl f b [x] == foldl f b [x]/"
+
+  src/Week04/Soln.hs:73:11: 
+  49) Week 04, myFoldlSpec, myFoldl f b [x,y,z] == foldl f b [x,y,z]
+       uncaught exception: ErrorCall
+       Week04.Soln#myFoldl not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:73:11 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/myFoldlSpec/myFoldl f b [x,y,z] == foldl f b [x,y,z]/"
+
+  src/Week04/Soln.hs:83:17: 
+  50) Week 04, sieveSundaram, sieveSundaram 1 == [3]
+       uncaught exception: ErrorCall
+       Week04.Soln#sieveSundaram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:83:17 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/sieveSundaram/sieveSundaram 1 == [3]/"
+
+  src/Week04/Soln.hs:83:17: 
+  51) Week 04, sieveSundaram, sieveSundaram 2 == [3,5]
+       uncaught exception: ErrorCall
+       Week04.Soln#sieveSundaram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:83:17 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/sieveSundaram/sieveSundaram 2 == [3,5]/"
+
+  src/Week04/Soln.hs:83:17: 
+  52) Week 04, sieveSundaram, sieveSundaram 2 == [3,5]
+       uncaught exception: ErrorCall
+       Week04.Soln#sieveSundaram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:83:17 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/sieveSundaram/sieveSundaram 2 == [3,5]/"
+
+  src/Week04/Soln.hs:83:17: 
+  53) Week 04, sieveSundaram, sieveSundaram 5 == [3,5,7,11]
+       uncaught exception: ErrorCall
+       Week04.Soln#sieveSundaram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:83:17 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/sieveSundaram/sieveSundaram 5 == [3,5,7,11]/"
+
+  src/Week04/Soln.hs:83:17: 
+  54) Week 04, sieveSundaram, sieveSundaram 10 == [3,5,7,11,13,17,19]
+       uncaught exception: ErrorCall
+       Week04.Soln#sieveSundaram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:83:17 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/sieveSundaram/sieveSundaram 10 == [3,5,7,11,13,17,19]/"
+
+  src/Week04/Soln.hs:83:17: 
+  55) Week 04, sieveSundaram, sieveSundaram 15 == [3,5,7,11,13,17,19,23,29,31]
+       uncaught exception: ErrorCall
+       Week04.Soln#sieveSundaram not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week04/Soln.hs:83:17 in stacktrace-cis194-0.1.0.0-inplace:Week04.Soln
+
+  To rerun use: --match "/Week 04/sieveSundaram/sieveSundaram 15 == [3,5,7,11,13,17,19,23,29,31]/"
+
+  src/Week05/Calc.hs:24:8: 
+  56) Week 05, Exercise 1, eval, eval (Lit 3) shouldBe 3
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Lit 3) shouldBe 3/"
+
+  src/Week05/Calc.hs:24:8: 
+  57) Week 05, Exercise 1, eval, eval (Add (Lit 2) (Lit 5)) shouldBe 7
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Add (Lit 2) (Lit 5)) shouldBe 7/"
+
+  src/Week05/Calc.hs:24:8: 
+  58) Week 05, Exercise 1, eval, eval (Mul (Lit 2) (Lit 7)) shouldBe 14
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Mul (Lit 2) (Lit 7)) shouldBe 14/"
+
+  src/Week05/Calc.hs:24:8: 
+  59) Week 05, Exercise 1, eval, eval (Mul (Add (Lit 2) (Lit 3)) (Lit 4)) shouldBe 20
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Mul (Add (Lit 2) (Lit 3)) (Lit 4)) shouldBe 20/"
+
+  src/Week05/Calc.hs:24:8: 
+  60) Week 05, Exercise 1, eval, eval (Add (Mul (Lit 5) (Lit 2)) (Lit 4)) shouldBe 14
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Add (Mul (Lit 5) (Lit 2)) (Lit 4)) shouldBe 14/"
+
+  src/Week05/Calc.hs:24:8: 
+  61) Week 05, Exercise 1, eval, eval (Add (Add (Lit 5) (Lit 2)) (Lit 4)) shouldBe 11
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Add (Add (Lit 5) (Lit 2)) (Lit 4)) shouldBe 11/"
+
+  src/Week05/Calc.hs:24:8: 
+  62) Week 05, Exercise 1, eval, eval (Add (Add (Mul (Lit 3) (Lit 3)) (Lit 2)) (Lit 4)) shouldBe 15
+       uncaught exception: ErrorCall
+       Week05.Calc#eval not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:24:8 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 1/eval/eval (Add (Add (Mul (Lit 3) (Lit 3)) (Lit 2)) (Lit 4)) shouldBe 15/"
+
+  src/Week05/Calc.hs:29:11: 
+  63) Week 05, Exercise 2, evalStr, evalStr "3" shouldBe Just 3
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"3\" shouldBe Just 3/"
+
+  src/Week05/Calc.hs:29:11: 
+  64) Week 05, Exercise 2, evalStr, evalStr "2 + 5" shouldBe Just 7
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"2 + 5\" shouldBe Just 7/"
+
+  src/Week05/Calc.hs:29:11: 
+  65) Week 05, Exercise 2, evalStr, evalStr "2 * 7" shouldBe Just 14
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"2 * 7\" shouldBe Just 14/"
+
+  src/Week05/Calc.hs:29:11: 
+  66) Week 05, Exercise 2, evalStr, evalStr "(2 * 6) + 5" shouldBe Just 17
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"(2 * 6) + 5\" shouldBe Just 17/"
+
+  src/Week05/Calc.hs:29:11: 
+  67) Week 05, Exercise 2, evalStr, evalStr "(3 + 4) * 2" shouldBe Just 14
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"(3 + 4) * 2\" shouldBe Just 14/"
+
+  src/Week05/Calc.hs:29:11: 
+  68) Week 05, Exercise 2, evalStr, evalStr "(3 + 4 + 5) * (2 * 3)" shouldBe Just 72
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"(3 + 4 + 5) * (2 * 3)\" shouldBe Just 72/"
+
+  src/Week05/Calc.hs:29:11: 
+  69) Week 05, Exercise 2, evalStr, evalStr "3 + " shouldBe Nothing
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"3 + \" shouldBe Nothing/"
+
+  src/Week05/Calc.hs:29:11: 
+  70) Week 05, Exercise 2, evalStr, evalStr "6 * " shouldBe Nothing
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"6 * \" shouldBe Nothing/"
+
+  src/Week05/Calc.hs:29:11: 
+  71) Week 05, Exercise 2, evalStr, evalStr "6 + (8 / 2)" shouldBe Nothing
+       uncaught exception: ErrorCall
+       Week05.Calc#evalStr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:29:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 2/evalStr/evalStr \"6 + (8 / 2)\" shouldBe Nothing/"
+
+  src/Week05/Calc.hs:41:9: 
+  72) Week 05, Exercise 3, instance Expr ExprT, lit, add, and mul should construct correct ExprT values
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for ExprT
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:41:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 3/instance Expr ExprT/lit, add, and mul should construct correct ExprT values/"
+
+  src/Week05/Calc.hs:53:9: 
+  73) Week 05, Exercise 4, instance Expr Integer, (3 * -4) + 5 shouldBe Just (-7)
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Integer
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:53:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Integer/(3 * -4) + 5 shouldBe Just (-7)/"
+
+  src/Week05/Calc.hs:54:9: 
+  74) Week 05, Exercise 4, instance Expr Integer, (3 + 2) * 4 shouldBe Just 20
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Integer
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:54:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Integer/(3 + 2) * 4 shouldBe Just 20/"
+
+  src/Week05/Calc.hs:53:9: 
+  75) Week 05, Exercise 4, instance Expr Integer, 3 + 6 + 8 shouldBe Just 17
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Integer
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:53:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Integer/3 + 6 + 8 shouldBe Just 17/"
+
+  src/Week05/Calc.hs:54:9: 
+  76) Week 05, Exercise 4, instance Expr Integer, 2 * 3 * 4 shouldBe Just 24
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Integer
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:54:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Integer/2 * 3 * 4 shouldBe Just 24/"
+
+  src/Week05/Calc.hs:58:9: 
+  77) Week 05, Exercise 4, instance Expr Bool, (1 * 0) + 1 shouldBe Just True
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for Bool
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:58:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Bool/(1 * 0) + 1 shouldBe Just True/"
+
+  src/Week05/Calc.hs:59:9: 
+  78) Week 05, Exercise 4, instance Expr Bool, (1 + 0) * 1 shouldBe Just True
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Bool
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:59:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Bool/(1 + 0) * 1 shouldBe Just True/"
+
+  src/Week05/Calc.hs:59:9: 
+  79) Week 05, Exercise 4, instance Expr Bool, (0 + 0) * 1 shouldBe Just False
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Bool
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:59:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Bool/(0 + 0) * 1 shouldBe Just False/"
+
+  src/Week05/Calc.hs:59:9: 
+  80) Week 05, Exercise 4, instance Expr Bool, (1 * 1) * 0 shouldBe Just False
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Bool
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:59:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Bool/(1 * 1) * 0 shouldBe Just False/"
+
+  src/Week05/Calc.hs:59:9: 
+  81) Week 05, Exercise 4, instance Expr Bool, 1 * 1 * 1 * 0 shouldBe Just False
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Bool
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:59:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Bool/1 * 1 * 1 * 0 shouldBe Just False/"
+
+  src/Week05/Calc.hs:58:9: 
+  82) Week 05, Exercise 4, instance Expr Bool, 0 + 0 + 0 + 1 shouldBe Just True
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for Bool
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:58:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Bool/0 + 0 + 0 + 1 shouldBe Just True/"
+
+  src/Week05/Calc.hs:62:9: 
+  83) Week 05, Exercise 4, instance Expr MinMax, 1 shouldBe Just (MinMax 1)
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for MinMax
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:62:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr MinMax/1 shouldBe Just (MinMax 1)/"
+
+  src/Week05/Calc.hs:63:9: 
+  84) Week 05, Exercise 4, instance Expr MinMax, 1 + 4 shouldBe Just (MinMax 4)
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for MinMax
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:63:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr MinMax/1 + 4 shouldBe Just (MinMax 4)/"
+
+  src/Week05/Calc.hs:64:9: 
+  85) Week 05, Exercise 4, instance Expr MinMax, 2 * 5 shouldBe Just (MinMax 2)
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for MinMax
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:64:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr MinMax/2 * 5 shouldBe Just (MinMax 2)/"
+
+  src/Week05/Calc.hs:64:9: 
+  86) Week 05, Exercise 4, instance Expr MinMax, 4 * (5 + 2) shouldBe Just (MinMax 4)
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for MinMax
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:64:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr MinMax/4 * (5 + 2) shouldBe Just (MinMax 4)/"
+
+  src/Week05/Calc.hs:67:9: 
+  87) Week 05, Exercise 4, instance Expr Mod7, 1 shouldBe Just (Mod7 1)
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Mod7
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:67:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Mod7/1 shouldBe Just (Mod7 1)/"
+
+  src/Week05/Calc.hs:67:9: 
+  88) Week 05, Exercise 4, instance Expr Mod7, 7 shouldBe Just (Mod7 0)
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Mod7
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:67:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Mod7/7 shouldBe Just (Mod7 0)/"
+
+  src/Week05/Calc.hs:67:9: 
+  89) Week 05, Exercise 4, instance Expr Mod7, 9 shouldBe Just (Mod7 2)
+       uncaught exception: ErrorCall
+       Week05.Calc#lit not implemented for Mod7
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:67:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Mod7/9 shouldBe Just (Mod7 2)/"
+
+  src/Week05/Calc.hs:69:9: 
+  90) Week 05, Exercise 4, instance Expr Mod7, 4 * 3 shouldBe Just (Mod7 5)
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Mod7
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:69:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Mod7/4 * 3 shouldBe Just (Mod7 5)/"
+
+  src/Week05/Calc.hs:68:9: 
+  91) Week 05, Exercise 4, instance Expr Mod7, 4 + 2 shouldBe Just (Mod7 6)
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for Mod7
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:68:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Mod7/4 + 2 shouldBe Just (Mod7 6)/"
+
+  src/Week05/Calc.hs:69:9: 
+  92) Week 05, Exercise 4, instance Expr Mod7, (4 + 6) * (2 + 3) shouldBe Just (Mod7 1)
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Mod7
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:69:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 4/instance Expr Mod7/(4 + 6) * (2 + 3) shouldBe Just (Mod7 1)/"
+
+  src/Week05/Calc.hs:74:9: 
+  93) Week 05, Exercise 5, instance Expr Program, 1 shouldBe Just [PushI 1]
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Program
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:74:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/instance Expr Program/1 shouldBe Just [PushI 1]/"
+
+  src/Week05/Calc.hs:75:9: 
+  94) Week 05, Exercise 5, instance Expr Program, 1 + 2 shouldBe Just [PushI 1, PushI 2, Add]
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Program
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:75:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/instance Expr Program/1 + 2 shouldBe Just [PushI 1, PushI 2, Add]/"
+
+  src/Week05/Calc.hs:76:9: 
+  95) Week 05, Exercise 5, instance Expr Program, 2 * 3 shouldBe Just [PushI 2, PushI 3, Mul]
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Program
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:76:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/instance Expr Program/2 * 3 shouldBe Just [PushI 2, PushI 3, Mul]/"
+
+  src/Week05/Calc.hs:75:9: 
+  96) Week 05, Exercise 5, instance Expr Program, (2 * 3) + (4 * 5) shouldBe Just [PushI 2, PushI 3, Mul, PushI 4, PushI 5, Mul, Add]
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for Program
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:75:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/instance Expr Program/(2 * 3) + (4 * 5) shouldBe Just [PushI 2, PushI 3, Mul, PushI 4, PushI 5, Mul, Add]/"
+
+  src/Week05/Calc.hs:79:11: 
+  97) Week 05, Exercise 5, compile, compile "1" shouldBe [PushI 1]
+       uncaught exception: ErrorCall
+       Week05.Calc#compile not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:79:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/compile/compile \"1\" shouldBe [PushI 1]/"
+
+  src/Week05/Calc.hs:79:11: 
+  98) Week 05, Exercise 5, compile, compile "1 + 4" shouldBe [SVM.PushI 1, SVM.PushI 4, Add]
+       uncaught exception: ErrorCall
+       Week05.Calc#compile not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:79:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/compile/compile \"1 + 4\" shouldBe [SVM.PushI 1, SVM.PushI 4, Add]/"
+
+  src/Week05/Calc.hs:79:11: 
+  99) Week 05, Exercise 5, compile, compile "5 * 3" shouldBe [SVM.PushI 5, SVM.PushI 3, Mul]
+       uncaught exception: ErrorCall
+       Week05.Calc#compile not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:79:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/compile/compile \"5 * 3\" shouldBe [SVM.PushI 5, SVM.PushI 3, Mul]/"
+
+  src/Week05/Calc.hs:79:11: 
+  100) Week 05, Exercise 5, compile, compile "(2 * 3) + (4 * 5)" shouldBe Just [PushI 2, PushI 3, Mul, PushI 4, PushI 5, Mul, Add]
+       uncaught exception: ErrorCall
+       Week05.Calc#compile not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:79:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/compile/compile \"(2 * 3) + (4 * 5)\" shouldBe Just [PushI 2, PushI 3, Mul, PushI 4, PushI 5, Mul, Add]/"
+
+  src/Week05/Calc.hs:79:11: 
+  101) Week 05, Exercise 5, compile, compile "5 * " shouldBe []
+       uncaught exception: ErrorCall
+       Week05.Calc#compile not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:79:11 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 5/compile/compile \"5 * \" shouldBe []/"
+
+  src/Week05/Calc.hs:94:9: 
+  102) Week 05, Exercise 6, instance Expr VarExprT, add (lit 3) (var "x") `shouldBe` AddWithVar (LitWithVar 3) (Var "x")
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for VarExprT
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:94:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 6/instance Expr VarExprT/add (lit 3) (var \"x\") `shouldBe` AddWithVar (LitWithVar 3) (Var \"x\")/"
+
+  src/Week05/Calc.hs:95:9: 
+  103) Week 05, Exercise 6, instance Expr VarExprT, mul (lit 7) (var "7") `shouldBe` MulWithVar (LitWithVar 7) (Var "y")
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for VarExprT
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:95:9 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 6/instance Expr VarExprT/mul (lit 7) (var \"7\") `shouldBe` MulWithVar (LitWithVar 7) (Var \"y\")/"
+
+  src/Week05/Calc.hs:110:5: 
+  104) Week 05, Exercise 6, calculate expressions with vars, withVars [("x", 6)] $ add (lit 3) (var "x") `shouldBe` Just 9
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for (M.Map String Integer -> Maybe Integer)
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:110:5 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 6/calculate expressions with vars/withVars [(\"x\", 6)] $ add (lit 3) (var \"x\") `shouldBe` Just 9/"
+
+  src/Week05/Calc.hs:110:5: 
+  105) Week 05, Exercise 6, calculate expressions with vars, withVars [("x", 6)] $ add (lit 3) (var "y")
+       uncaught exception: ErrorCall
+       Week05.Calc#add not implemented for (M.Map String Integer -> Maybe Integer)
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:110:5 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 6/calculate expressions with vars/withVars [(\"x\", 6)] $ add (lit 3) (var \"y\")/"
+
+  src/Week05/Calc.hs:113:5: 
+  106) Week 05, Exercise 6, calculate expressions with vars, withVars [("x", 6), ("y", 3)] $ mul (var "x") (add (var "y") (var "x"))
+       uncaught exception: ErrorCall
+       Week05.Calc#mul not implemented for (M.Map String Integer -> Maybe Integer)
+       CallStack (from HasCallStack):
+         error, called at src/Week05/Calc.hs:113:5 in stacktrace-cis194-0.1.0.0-inplace:Week05.Calc
+
+  To rerun use: --match "/Week 05/Exercise 6/calculate expressions with vars/withVars [(\"x\", 6), (\"y\", 3)] $ mul (var \"x\") (add (var \"y\") (var \"x\"))/"
+
+  src/Week06/Fibonacci.hs:23:7: 
+  107) Week 04, fib, produces the fibonacci number at index n
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fib not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:23:7 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fib/produces the fibonacci number at index n/"
+
+  src/Week06/Fibonacci.hs:26:9: 
+  108) Week 04, fibs1, produces an infinite list of all the fibonacci numbers
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fibs1 not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:26:9 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fibs1/produces an infinite list of all the fibonacci numbers/"
+
+  src/Week06/Fibonacci.hs:31:9: 
+  109) Week 04, fibs2, produces an infinite list of all the fibonacci numbers in linear time
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fibs2 not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:31:9 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fibs2/produces an infinite list of all the fibonacci numbers in linear time/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  110) Week 04, streamToList, converts an infinite stream to an infinite list
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/streamToList/converts an infinite stream to an infinite list/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  111) Week 04, streamRepeat, generates a stream containing infinitely many copies of the given element
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/streamRepeat/generates a stream containing infinitely many copies of the given element/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  112) Week 04, streamMap, applies a function to every element of a Stream
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/streamMap/applies a function to every element of a Stream/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  113) Week 04, streamFromSeed, generates a stream by repeatedly applying the provided function
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/streamFromSeed/generates a stream by repeatedly applying the provided function/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  114) Week 04, nats, contains the infinite list of natural numbers
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/nats/contains the infinite list of natural numbers/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  115) Week 04, ruler, corresponds to the ruler function
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/ruler/corresponds to the ruler function/"
+
+  src/Week06/Fibonacci.hs:38:16: 
+  116) Week 04, fibs3, produces an infinite list of all the fibonacci numbers
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#streamToList not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:38:16 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fibs3/produces an infinite list of all the fibonacci numbers/"
+
+  src/Week06/Fibonacci.hs:67:8: 
+  117) Week 04, fib4, fib4 0 == 0
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fibs4 not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:67:8 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fib4/fib4 0 == 0/"
+
+  src/Week06/Fibonacci.hs:67:8: 
+  118) Week 04, fib4, fib4 1 == 1
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fibs4 not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:67:8 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fib4/fib4 1 == 1/"
+
+  src/Week06/Fibonacci.hs:67:8: 
+  119) Week 04, fib4, fib4 5 == 5
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fibs4 not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:67:8 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fib4/fib4 5 == 5/"
+
+  src/Week06/Fibonacci.hs:67:8: 
+  120) Week 04, fib4, fib4 100 == 354224848179261915075
+       uncaught exception: ErrorCall
+       Week06.Fibonacci#fibs4 not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week06/Fibonacci.hs:67:8 in stacktrace-cis194-0.1.0.0-inplace:Week06.Fibonacci
+
+  To rerun use: --match "/Week 04/fib4/fib4 100 == 354224848179261915075/"
+
+  src/Week07/JoinList.hs:53:9: 
+  121) Week 07, +++, concats two JoinLists
+       uncaught exception: ErrorCall
+       Week07.JoinList#(+++) not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:53:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/+++/concats two JoinLists/"
+
+  src/Week07/JoinList.hs:58:10: 
+  122) Week 07, indexJ, returns Nothing for positive index out of bounds
+       uncaught exception: ErrorCall
+       Week07.JoinList#indexJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:58:10 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/indexJ/returns Nothing for positive index out of bounds/"
+
+  src/Week07/JoinList.hs:58:10: 
+  123) Week 07, indexJ, returns Nothing for negative index
+       uncaught exception: ErrorCall
+       Week07.JoinList#indexJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:58:10 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/indexJ/returns Nothing for negative index/"
+
+  src/Week07/JoinList.hs:58:10: 
+  124) Week 07, indexJ, returns correct value for index in bounds
+       uncaught exception: ErrorCall
+       Week07.JoinList#indexJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:58:10 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/indexJ/returns correct value for index in bounds/"
+
+  src/Week07/JoinList.hs:61:9: 
+  125) Week 07, dropJ, dropping from empty list gives empty list
+       uncaught exception: ErrorCall
+       Week07.JoinList#dropJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:61:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/dropJ/dropping from empty list gives empty list/"
+
+  src/Week07/JoinList.hs:61:9: 
+  126) Week 07, dropJ, dropping more elements than are in list gives empty list
+       uncaught exception: ErrorCall
+       Week07.JoinList#dropJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:61:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/dropJ/dropping more elements than are in list gives empty list/"
+
+  src/Week07/JoinList.hs:61:9: 
+  127) Week 07, dropJ, joinListToList (dropJ n jl) == drop n (joinListToList jl)
+       uncaught exception: ErrorCall
+       Week07.JoinList#dropJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:61:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/dropJ/joinListToList (dropJ n jl) == drop n (joinListToList jl)/"
+
+  src/Week07/JoinList.hs:64:9: 
+  128) Week 07, takeJ, taking from empty list gives empty list
+       uncaught exception: ErrorCall
+       Week07.JoinList#takeJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:64:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/takeJ/taking from empty list gives empty list/"
+
+  src/Week07/JoinList.hs:64:9: 
+  129) Week 07, takeJ, taking more than the length of the list gives the whole list
+       uncaught exception: ErrorCall
+       Week07.JoinList#takeJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:64:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/takeJ/taking more than the length of the list gives the whole list/"
+
+  src/Week07/JoinList.hs:64:9: 
+  130) Week 07, takeJ, joinListToList (takeJ n jl) == take n (joinListToList jl)
+       uncaught exception: ErrorCall
+       Week07.JoinList#takeJ not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:64:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/takeJ/joinListToList (takeJ n jl) == take n (joinListToList jl)/"
+
+  src/Week07/Scrabble.hs:54:15: 
+  131) Week 07, scoreString, scores empty string as 0
+       uncaught exception: ErrorCall
+       Week07.Scrabble#scoreString not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/Scrabble.hs:54:15 in stacktrace-cis194-0.1.0.0-inplace:Week07.Scrabble
+
+  To rerun use: --match "/Week 07/scoreString/scores empty string as 0/"
+
+  src/Week07/Scrabble.hs:54:15: 
+  132) Week 07, scoreString, scores string of special chars as 0
+       uncaught exception: ErrorCall
+       Week07.Scrabble#scoreString not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/Scrabble.hs:54:15 in stacktrace-cis194-0.1.0.0-inplace:Week07.Scrabble
+
+  To rerun use: --match "/Week 07/scoreString/scores string of special chars as 0/"
+
+  src/Week07/Scrabble.hs:54:15: 
+  133) Week 07, scoreString, scores 'cat' as 5
+       uncaught exception: ErrorCall
+       Week07.Scrabble#scoreString not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/Scrabble.hs:54:15 in stacktrace-cis194-0.1.0.0-inplace:Week07.Scrabble
+
+  To rerun use: --match "/Week 07/scoreString/scores 'cat' as 5/"
+
+  src/Week07/Scrabble.hs:54:15: 
+  134) Week 07, scoreString, scores 'dog' as 5
+       uncaught exception: ErrorCall
+       Week07.Scrabble#scoreString not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/Scrabble.hs:54:15 in stacktrace-cis194-0.1.0.0-inplace:Week07.Scrabble
+
+  To rerun use: --match "/Week 07/scoreString/scores 'dog' as 5/"
+
+  src/Week07/Scrabble.hs:54:15: 
+  135) Week 07, scoreString, scores 'quickly' as 25
+       uncaught exception: ErrorCall
+       Week07.Scrabble#scoreString not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/Scrabble.hs:54:15 in stacktrace-cis194-0.1.0.0-inplace:Week07.Scrabble
+
+  To rerun use: --match "/Week 07/scoreString/scores 'quickly' as 25/"
+
+  src/Week07/Scrabble.hs:54:15: 
+  136) Week 07, scoreString, scores 'pizzazz' as 45
+       uncaught exception: ErrorCall
+       Week07.Scrabble#scoreString not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/Scrabble.hs:54:15 in stacktrace-cis194-0.1.0.0-inplace:Week07.Scrabble
+
+  To rerun use: --match "/Week 07/scoreString/scores 'pizzazz' as 45/"
+
+  src/Week07/JoinList.hs:69:13: 
+  137) Week 07, scoreLine, scoreLine '' == Single (Score 0) ''
+       uncaught exception: ErrorCall
+       Week07.JoinList#scoreLine not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:69:13 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/scoreLine/scoreLine '' == Single (Score 0) ''/"
+
+  src/Week07/JoinList.hs:69:13: 
+  138) Week 07, scoreLine, scoreLine 'cat' == Single (Score 5) 'cat'
+       uncaught exception: ErrorCall
+       Week07.JoinList#scoreLine not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:69:13 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/scoreLine/scoreLine 'cat' == Single (Score 5) 'cat'/"
+
+  src/Week07/JoinList.hs:69:13: 
+  139) Week 07, scoreLine, scoreLine 'quickly' == Single (Score 25) 'quickly'
+       uncaught exception: ErrorCall
+       Week07.JoinList#scoreLine not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:69:13 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/scoreLine/scoreLine 'quickly' == Single (Score 25) 'quickly'/"
+
+  src/Week07/JoinList.hs:53:9: 
+  140) Week 07, scoreLine, scoreLine 'yay ' +++ scoreLine 'haskell!' is correct join list
+       uncaught exception: ErrorCall
+       Week07.JoinList#(+++) not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:53:9 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/scoreLine/scoreLine 'yay ' +++ scoreLine 'haskell!' is correct join list/"
+
+  src/Week07/JoinList.hs:76:5: 
+  141) Week 07, instance Buffer (JoinList (Score, Size) String), toString, empty join list is empty string
+       uncaught exception: ErrorCall
+       Week07.JoinList#toString not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:76:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/toString/empty join list is empty string/"
+
+  src/Week07/JoinList.hs:76:5: 
+  142) Week 07, instance Buffer (JoinList (Score, Size) String), toString, join list with single element should be the single value
+       uncaught exception: ErrorCall
+       Week07.JoinList#toString not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:76:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/toString/join list with single element should be the single value/"
+
+  src/Week07/JoinList.hs:76:5: 
+  143) Week 07, instance Buffer (JoinList (Score, Size) String), toString, join list with 2 elements should be the string concatenation of the values
+       uncaught exception: ErrorCall
+       Week07.JoinList#toString not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:76:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/toString/join list with 2 elements should be the string concatenation of the values/"
+
+  src/Week07/JoinList.hs:81:5: 
+  144) Week 07, instance Buffer (JoinList (Score, Size) String), fromString, empty string gives empty list
+       uncaught exception: ErrorCall
+       Week07.JoinList#fromString not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:81:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/fromString/empty string gives empty list/"
+
+  src/Week07/JoinList.hs:81:5: 
+  145) Week 07, instance Buffer (JoinList (Score, Size) String), fromString, string without new line => correctly scored single element list
+       uncaught exception: ErrorCall
+       Week07.JoinList#fromString not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:81:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/fromString/string without new line => correctly scored single element list/"
+
+  src/Week07/JoinList.hs:81:5: 
+  146) Week 07, instance Buffer (JoinList (Score, Size) String), fromString, string with newline => correctly scored 2-elem list
+       uncaught exception: ErrorCall
+       Week07.JoinList#fromString not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:81:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/fromString/string with newline => correctly scored 2-elem list/"
+
+  src/Week07/JoinList.hs:86:5: 
+  147) Week 07, instance Buffer (JoinList (Score, Size) String), line, returns Nothing for index out of bounds
+       uncaught exception: ErrorCall
+       Week07.JoinList#line not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:86:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/line/returns Nothing for index out of bounds/"
+
+  src/Week07/JoinList.hs:86:5: 
+  148) Week 07, instance Buffer (JoinList (Score, Size) String), line, returns element at index
+       uncaught exception: ErrorCall
+       Week07.JoinList#line not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:86:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/line/returns element at index/"
+
+  src/Week07/JoinList.hs:95:5: 
+  149) Week 07, instance Buffer (JoinList (Score, Size) String), replaceLine, replacing line in empty list returns empty list
+       uncaught exception: ErrorCall
+       Week07.JoinList#replaceLine not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:95:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/replaceLine/replacing line in empty list returns empty list/"
+
+  src/Week07/JoinList.hs:95:5: 
+  150) Week 07, instance Buffer (JoinList (Score, Size) String), replaceLine, replaceing line with index out of bounds returns input list unchanged
+       uncaught exception: ErrorCall
+       Week07.JoinList#replaceLine not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:95:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/replaceLine/replaceing line with index out of bounds returns input list unchanged/"
+
+  src/Week07/JoinList.hs:95:5: 
+  151) Week 07, instance Buffer (JoinList (Score, Size) String), replaceLine, replaces line and score and size remain correct
+       uncaught exception: ErrorCall
+       Week07.JoinList#replaceLine not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:95:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/replaceLine/replaces line and score and size remain correct/"
+
+  src/Week07/JoinList.hs:100:5: 
+  152) Week 07, instance Buffer (JoinList (Score, Size) String), numLines, returns 0 for empty list
+       uncaught exception: ErrorCall
+       Week07.JoinList#numLines not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:100:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/numLines/returns 0 for empty list/"
+
+  src/Week07/JoinList.hs:100:5: 
+  153) Week 07, instance Buffer (JoinList (Score, Size) String), numLines, returns 1 for singleon list
+       uncaught exception: ErrorCall
+       Week07.JoinList#numLines not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:100:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/numLines/returns 1 for singleon list/"
+
+  src/Week07/JoinList.hs:100:5: 
+  154) Week 07, instance Buffer (JoinList (Score, Size) String), numLines, returns 2 for 2-elem list
+       uncaught exception: ErrorCall
+       Week07.JoinList#numLines not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:100:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/numLines/returns 2 for 2-elem list/"
+
+  src/Week07/JoinList.hs:105:5: 
+  155) Week 07, instance Buffer (JoinList (Score, Size) String), value, retruns correct score value
+       uncaught exception: ErrorCall
+       Week07.JoinList#value not implemented for Buffer (JoinList (Score, Size) String)
+       CallStack (from HasCallStack):
+         error, called at src/Week07/JoinList.hs:105:5 in stacktrace-cis194-0.1.0.0-inplace:Week07.JoinList
+
+  To rerun use: --match "/Week 07/instance Buffer (JoinList (Score, Size) String)/value/retruns correct score value/"
+
+  src/Week08/Party.hs:18:10: 
+  156) Week 08, glCons, adding element to empty list
+       uncaught exception: ErrorCall
+       Week08.Party#glCons not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:18:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/glCons/adding element to empty list/"
+
+  src/Week08/Party.hs:18:10: 
+  157) Week 08, glCons, adding element to non-empty list
+       uncaught exception: ErrorCall
+       Week08.Party#glCons not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:18:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/glCons/adding element to non-empty list/"
+
+  src/Week08/Employee.hs:59:10: 
+  158) Week 08, instance Monoid GuestList, satisfies the right identity law
+       uncaught exception: ErrorCall
+       Week08.Party#Monoid(GuestList)#mappend not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Employee.hs:59:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Employee
+
+  To rerun use: --match "/Week 08/instance Monoid GuestList/satisfies the right identity law/"
+
+  src/Week08/Employee.hs:59:10: 
+  159) Week 08, instance Monoid GuestList, satisfies the left identity law
+       uncaught exception: ErrorCall
+       Week08.Party#Monoid(GuestList)#mappend not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Employee.hs:59:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Employee
+
+  To rerun use: --match "/Week 08/instance Monoid GuestList/satisfies the left identity law/"
+
+  src/Week08/Employee.hs:59:10: 
+  160) Week 08, instance Monoid GuestList, satisifed the associativity law
+       uncaught exception: ErrorCall
+       Week08.Party#Monoid(GuestList)#mappend not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Employee.hs:59:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Employee
+
+  To rerun use: --match "/Week 08/instance Monoid GuestList/satisifed the associativity law/"
+
+  src/Week08/Party.hs:25:11: 
+  161) Week 08, moreFun, chooses funnest list
+       uncaught exception: ErrorCall
+       Week08.Party#moreFun not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:25:11 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/moreFun/chooses funnest list/"
+
+  src/Week08/Party.hs:34:13: 
+  162) Week 08, nextLevel, employee has no subtrees
+       uncaught exception: ErrorCall
+       Week08.Party#nextLevel not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:34:13 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/nextLevel/employee has no subtrees/"
+
+  src/Week08/Party.hs:34:13: 
+  163) Week 08, nextLevel, employee has single subtree
+       uncaught exception: ErrorCall
+       Week08.Party#nextLevel not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:34:13 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/nextLevel/employee has single subtree/"
+
+  src/Week08/Party.hs:34:13: 
+  164) Week 08, nextLevel, employee has many subtrees
+       uncaught exception: ErrorCall
+       Week08.Party#nextLevel not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:34:13 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/nextLevel/employee has many subtrees/"
+
+  src/Week08/Party.hs:39:10: 
+  165) Week 08, maxFunSpec, single node tree
+       uncaught exception: ErrorCall
+       Week08.Party#maxFun not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:39:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/maxFunSpec/single node tree/"
+
+  src/Week08/Party.hs:39:10: 
+  166) Week 08, maxFunSpec, multi-node tree
+       uncaught exception: ErrorCall
+       Week08.Party#maxFun not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:39:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/maxFunSpec/multi-node tree/"
+
+  src/Week08/Party.hs:39:10: 
+  167) Week 08, evaluating company.txt, should have 458 guests, with a fun total of 21669
+       uncaught exception: ErrorCall
+       Week08.Party#maxFun not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week08/Party.hs:39:10 in stacktrace-cis194-0.1.0.0-inplace:Week08.Party
+
+  To rerun use: --match "/Week 08/evaluating company.txt/should have 458 guests, with a fun total of 21669/"
+
+  test/Week10/AParserSpec.hs:48:29: 
+  168) Week 10, Functor, preserves identity
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/Functor/preserves identity/"
+
+  test/Week10/AParserSpec.hs:53:32: 
+  169) Week 10, Functor, preserves composition
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/Functor/preserves composition/"
+
+  test/Week10/AParserSpec.hs:61:29: 
+  170) Week 10, Applicative, preserves identity
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/Applicative/preserves identity/"
+
+  test/Week10/AParserSpec.hs:66:32: 
+  171) Week 10, Applicative, preserves composition
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/Applicative/preserves composition/"
+
+  test/Week10/AParserSpec.hs:72:25: 
+  172) Week 10, Applicative, is homomorphic
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/Applicative/is homomorphic/"
+
+  test/Week10/AParserSpec.hs:81:7: 
+  173) Week 10, abParser, expects to see the characters 'a' and 'b' and returns them as a pair
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/abParser/expects to see the characters 'a' and 'b' and returns them as a pair/"
+
+  test/Week10/AParserSpec.hs:92:7: 
+  174) Week 10, abParser_, expects to see the characters 'a' and 'b' and returns ()
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/abParser_/expects to see the characters 'a' and 'b' and returns ()/"
+
+  test/Week10/AParserSpec.hs:104:7: 
+  175) Week 10, intPair, reads two integer values separated by a space and returns the integer values in a list
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/intPair/reads two integer values separated by a space and returns the integer values in a list/"
+
+  test/Week10/AParserSpec.hs:116:7: 
+  176) Week 10, intOrUppercase, parses either an integer value or an uppercase character, and fails otherwise
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 10/intOrUppercase/parses either an integer value or an uppercase character, and fails otherwise/"
+
+  test/Week11/SExprSpec.hs:76:7: 
+  177) Week 11, zeroOrMore, parses zero or more occurences from start
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/zeroOrMore/parses zero or more occurences from start/"
+
+  test/Week11/SExprSpec.hs:86:51: 
+  178) Week 11, oneOrMore, parses one or more occurences from start
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/oneOrMore/parses one or more occurences from start/"
+
+  test/Week11/SExprSpec.hs:91:41: 
+  179) Week 11, oneOrMore, fails when no matches at start
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/oneOrMore/fails when no matches at start/"
+
+  test/Week11/SExprSpec.hs:101:7: 
+  180) Week 11, spaces, parses zero or more spaces from the start
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/spaces/parses zero or more spaces from the start/"
+
+  test/Week11/SExprSpec.hs:113:7: 
+  181) Week 11, ident, successfully parses identifier from strings starting with alphas
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/ident/successfully parses identifier from strings starting with alphas/"
+
+  test/Week11/SExprSpec.hs:122:48: 
+  182) Week 11, ident, fails when first char is not an alpha
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/ident/fails when first char is not an alpha/"
+
+  test/Week11/SExprSpec.hs:164:45: 
+  183) Week 11, parseSExpr, property based..., parses single atoms successfully
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/parseSExpr/property based.../parses single atoms successfully/"
+
+  test/Week11/SExprSpec.hs:167:55: 
+  184) Week 11, parseSExpr, property based..., parses single level of atoms inside parens
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/parseSExpr/property based.../parses single level of atoms inside parens/"
+
+  test/Week11/SExprSpec.hs:172:46: 
+  185) Week 11, parseSExpr, property based..., parses nested SExprs successfully
+       Hedgehog property test failed
+
+  To rerun use: --match "/Week 11/parseSExpr/property based.../parses nested SExprs successfully/"
+
+  src/Week11/SExpr.hs:53:14: 
+  186) Week 11, parseSExpr, manual..., parsing unbalanced parens fails
+       uncaught exception: ErrorCall
+       Week11.SExpr#parseSExpr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+
+  To rerun use: --match "/Week 11/parseSExpr/manual.../parsing unbalanced parens fails/"
+
+  src/Week11/SExpr.hs:53:14: 
+  187) Week 11, parseSExpr, manual..., parsing '(bar (foo) 3 5 874)' succeeds
+       uncaught exception: ErrorCall
+       Week11.SExpr#parseSExpr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+
+  To rerun use: --match "/Week 11/parseSExpr/manual.../parsing '(bar (foo) 3 5 874)' succeeds/"
+
+  src/Week11/SExpr.hs:53:14: 
+  188) Week 11, parseSExpr, manual..., parsing '(mul (2 (add (42 56)))' succeeds
+       uncaught exception: ErrorCall
+       Week11.SExpr#parseSExpr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+
+  To rerun use: --match "/Week 11/parseSExpr/manual.../parsing '(mul (2 (add (42 56)))' succeeds/"
+
+  src/Week11/SExpr.hs:53:14: 
+  189) Week 11, parseSExpr, manual..., parsing '( lots of ( spaces in ) this ( one ) )' succeeds
+       uncaught exception: ErrorCall
+       Week11.SExpr#parseSExpr not implemented
+       CallStack (from HasCallStack):
+         error, called at src/Week11/SExpr.hs:53:14 in stacktrace-cis194-0.1.0.0-inplace:Week11.SExpr
+
+  To rerun use: --match "/Week 11/parseSExpr/manual.../parsing '( lots of ( spaces in ) this ( one ) )' succeeds/"
+
+Randomized with seed 235804985
+
+Finished in 0.1880 seconds
+189 examples, 189 failures
+Test suite spec: FAIL
+Test suite logged to: /Users/alex/projects/cis194-exercises/dist-newstyle/build/x86_64-osx/ghc-8.6.5/stacktrace-cis194-0.1.0.0/t/spec/test/stacktrace-cis194-0.1.0.0-spec.log
