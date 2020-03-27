@@ -18,13 +18,16 @@ toDigitsRev x
 doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther []       = []
 doubleEveryOther [x]      = [x]
-doubleEveryOther (x:y:ys) = x * fx : y * fy : doubleEveryOther ys
-  where (fx, fy) = if (even $ length ys) then (2,1) else (1,2)
+doubleEveryOther (x:y:ys) = x' : y' : doubleEveryOther ys
+  where
+    z = toInteger $ fromEnum $ even $ length ys
+    x' = x * (+) 1 z
+    y' = y * (-) 2 z
 
 sumDigits :: [Integer] -> Integer
 sumDigits []     = 0
 sumDigits [x]    = x
-sumDigits (x:xs) = (sumDigits $ toDigits x) + sumDigits xs
+sumDigits (x:xs) = sumDigits (toDigits x) + sumDigits xs
 
 validate :: Integer -> Bool
-validate n = (sumDigits $ doubleEveryOther $ toDigits n) `mod` 10 == 0
+validate = (==0) . flip mod 10 . sumDigits . doubleEveryOther . toDigits
