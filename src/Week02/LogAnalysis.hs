@@ -1,3 +1,4 @@
+
 module Week02.LogAnalysis
   ( parseMessage
   , parse
@@ -31,17 +32,29 @@ parse = map parseMessage . lines
 insert :: LogMessage -> MessageTree -> MessageTree
 insert (Unknown _) tree = tree
 insert msg         Leaf = Node Leaf msg Leaf
-
-insert msg tree@(Node _ tMsg _) | True      = Node (insert msg Leaf) tMsg Leaf
-                                | otherwise = Node Leaf tMsg (insert msg Leaf)
-
-
+insert msg (Node l tMsg r) | time msg <= time tMsg = Node (insert msg l) tMsg r
+                           | otherwise             = Node l tMsg (insert msg r)
+ where
+  time (LogMessage _ t _) = t
+  time (Unknown _       ) = undefined
 
 build :: [LogMessage] -> MessageTree
-build = error "Week02.LogAnalysis#build not implemented"
+build = foldl (flip insert) Leaf
 
 inOrder :: MessageTree -> [LogMessage]
-inOrder = error "Week02.LogAnalysis#inOrder not implemented"
+inOrder Leaf         = []
+inOrder (Node l m r) = inOrder l ++ [m] ++ inOrder r
+
 
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong = error "Week02.LogAnalysis#whatWentWrong not implemented"
+whatWentWrong = map pluckMsg . filter relevant . inOrder . build
+ where
+  pluckMsg :: LogMessage -> String
+  pluckMsg (LogMessage _ _ s) = s
+  pluckMsg _                  = ""
+
+  relevant :: LogMessage -> Bool
+  relevant (LogMessage (Error eCode) _ _) = eCode > 50
+  relevant _                              = False
+
+
